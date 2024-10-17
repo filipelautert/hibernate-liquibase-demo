@@ -15,14 +15,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.0</version>
+        <version>3.1.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
-        <liquibase.version>4.18.0</liquibase.version>
-        <liquibase-hibernate6.version>0-SNAPSHOT</liquibase-hibernate6.version>
-        <hibernate6.version>6.1.5.Final</hibernate6.version>
+        <liquibase.version>4.29.2</liquibase.version>
+        <liquibase-hibernate6.version>4.29.2</liquibase-hibernate6.version>
+        <hibernate6.version>6.3.1.Final</hibernate6.version>
         <javassist.version>3.24.0-GA</javassist.version>
         <validation-api.version>3.0.2</validation-api.version>
         <maven.compiler.source>11</maven.compiler.source>
@@ -40,6 +40,11 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
         </dependency>
     </dependencies>
 
@@ -69,7 +74,6 @@
                         ${project.basedir}/src/main/resources/db/migrations/${maven.build.timestamp}_changelog.xml
                     </diffChangeLogFile>
                     <propertyFile>src/main/resources/spring.properties</propertyFile>
-                    <logging>debug</logging>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -85,7 +89,12 @@
                     <dependency>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-starter-data-jpa</artifactId>
-                        <version>3.0.0</version>
+                        <version>3.1.2</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-validation</artifactId>
+                        <version>3.1.2</version>
                     </dependency>
                     <dependency>
                         <groupId>jakarta.validation</groupId>

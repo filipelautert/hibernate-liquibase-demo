@@ -1,19 +1,24 @@
 package com.liquibase;
 
-import java.io.Serializable;
-
 import jakarta.persistence.*;
+
+import java.io.Serializable;
 
 /**
  * @author Julius Krah
  */
 @Entity
+@Table(indexes = @Index(name = "myIndex", columnList = "owner"))
 public class House implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue
+    //@GeneratedValue
     private Integer id;
+
+    @Column
     private String owner;
+
+    @Column
     private boolean fullyPaid;
 
     public Integer getId() {
